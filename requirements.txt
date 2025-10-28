@@ -1,0 +1,7 @@
+pandas
+pyyaml
+python-dateutil
+jinja2
+idstools       # or py-idstools (see note below)
+weasyprint     # optional PDF export (or wkhtmltopdf)
+flask          # optional for web UI
