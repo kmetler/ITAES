@@ -1,0 +1,45 @@
+                    +-----------------+
+                    |  Snort Logs     |
+                    | (fast.log,      |
+                    |  unified2)      |
+                    +--------+--------+
+                             |
+                     (ingest / copy)
+                             |
+                 +-----------v-----------+
+                 |   Parser Module       |
+                 | - fast.log parser     |
+                 | - unified2 reader     |
+                 +-----------+-----------+
+                             |
+            normalized JSON records (schema below)
+                             |
+                 +-----------v-----------+
+                 |  Normalizer & Store   |
+                 | - field normalization |
+                 | - filter/merge dupes  |
+                 +-----------+-----------+
+                             |
+             +---------------+---------------+
+             |                               |
++------------v-----------+         +---------v----------+
+| Timeline Builder       |         | Alert Explainer    |
+| - group alerts into    |         | - lookup dict (YAML)|
+|   episodes by IP/time  |         | - map SID/msg ->    |
+| - output timeline.json |         |   explanation,      |
+|                       -->        |   recommended step  |
++------------+-----------+         +---------+----------+
+             |                               |
+             +---------------+---------------+
+                             |
+                     +-------v--------+
+                     | Report Generator|
+                     | - report.html   |
+                     | - report.pdf    |
+                     +-----------------+
+                             |
+                     (optional web UI)
+                             |
+                     +-------v--------+
+                     | Flask / React  |
+                     +----------------+
