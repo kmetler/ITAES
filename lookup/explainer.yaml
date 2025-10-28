@@ -1,0 +1,13 @@
+# Maps Snort SIDs to plain-English eplanations and recommened actions
+1000001:
+  msg: "ICMP test detected"
+  explanation: "Unusual ICMP traffic possibly used for reconnaissance."
+  recommended_action:
+    - "Check if pings are expected from the source host."
+    - "If suspicious, block IP and capture additional traffic."
+
+2000210:
+  msg: "ET POLICY Outbound SSH Connection"
+  explanation: "Outbound SSH detected; may indicate unauthorized remote access."
+  recommended_action:
+    - "Verify user/host identity and check SSH logs."
