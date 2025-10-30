@@ -8,9 +8,10 @@
     "src_port": null,
     "dst_ip": "192.168.1.20",
     "dst_port": null,
-    "explanation": "No explanation found.",
+    "explanation": "Unusual ICMP traffic possibly used for reconnaissance.",
     "recommended_action": [
-      "Investigate manually."
+      "Check if pings are expected from the source host.",
+      "If suspicious, block IP and capture additional traffic."
     ]
   }
 ]

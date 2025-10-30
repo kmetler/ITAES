@@ -7,7 +7,8 @@ import yaml
 
 def load_explainer(file_path):
     with open(file_path, 'r') as f:
-        return yaml.safe_load(f)
+        data = yaml.safe_load(f) or {}
+    return {str(k): v for k, v in data.items()}
 
 def enrich_alert(alert, explainer_dict):
     """Add explanation and recommended action to an alert."""
