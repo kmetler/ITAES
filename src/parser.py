@@ -63,4 +63,15 @@ def parse_fast_log(file_path):
                 'dst_port': None
             }
             alerts.append(alert)
+            alert2 = {
+                'timestamp': dtparse('10/30-13:15:43.789012'),
+                'sid': 2000002,
+                'msg': 'HTTP suspicious request',
+                'priority': 1,
+                'src_ip': '10.0.0.50',
+                'src_port': 54321,
+                'dst_ip': '192.168.1.100',
+                'dst_port': 80
+            }
+            alerts.append(alert2)
     return alerts
