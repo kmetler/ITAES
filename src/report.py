@@ -81,10 +81,11 @@ HTML_TEMPLATE = """
             border-left-color: #60a5fa;
             box-shadow: 0 8px 16px rgba(59, 130, 246, 0.1);
         }
-        .alert-card.priority-0 { border-left-color: #10b981; }
-        .alert-card.priority-1 { border-left-color: #f59e0b; }
-        .alert-card.priority-2 { border-left-color: #ef4444; }
-        .alert-card.priority-3 { border-left-color: #8b5cf6; }
+        .alert-card.priority-1 { border-left-color: #ef4444; }   /* red */
+        .alert-card.priority-2 { border-left-color: #f59e0b; }   /* orange */
+        .alert-card.priority-3 { border-left-color: #facc15; }   /* yellow */
+        .alert-card.priority-0 { border-left-color: #10b981; }   /* green */
+
         .alert-header {
             display: flex;
             justify-content: space-between;
@@ -238,6 +239,10 @@ HTML_TEMPLATE = """
 """
 
 def generate_html_report(alerts, output_file='report.html'):
+    # sort alerts highest priority first
+    alerts = sorted(alerts, key=lambda a: a['priority'])
+
+
     template = Template(HTML_TEMPLATE)
     rendered = template.render(alerts=alerts)
     with open(output_file, 'w', encoding='utf-8') as f:

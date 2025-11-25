@@ -1,0 +1,47 @@
+[**] [1:2000210:0] ET POLICY Outbound SSH Connection [**]
+[Priority: 1]
+10/15-14:22:33.456789 192.168.1.50:54321 -> 203.0.113.10:22
+
+[**] [1:2013029:0] ET MALWARE Win32/Conficker.B!C Worm Outbound Connection [**]
+[Priority: 1]
+10/15-14:23:15.789012 192.168.1.75:49152 -> 198.51.100.45:445
+
+[**] [1:2010937:0] ET POLICY Suspicious inbound to MSSQL port 1433 [**]
+[Priority: 2]
+10/15-14:24:01.234567 10.0.0.100:52341 -> 192.168.1.200:1433
+
+[**] [1:2014876:0] ET EXPLOIT Possible SQL Injection Attempt [**]
+[Priority: 1]
+10/15-14:25:45.567890 203.0.113.55:12345 -> 192.168.1.100:80
+
+[**] [1:2003055:0] ET POLICY Suspicious User-Agent in HTTP Request [**]
+[Priority: 3]
+10/15-14:26:30.123456 192.168.1.30:55555 -> 198.51.100.200:443
+
+[**] [1:2011807:0] ET MALWARE Suspicious DNS Query [**]
+[Priority: 2]
+10/15-14:27:12.345678 192.168.1.40:53241 -> 8.8.8.8:53
+
+[**] [1:2009910:0] ET POLICY Suspicious FTP Connection [**]
+[Priority: 2]
+10/15-14:28:05.678901 192.168.1.60:49200 -> 10.0.0.50:21
+
+[**] [1:2015234:0] ET EXPLOIT Buffer Overflow Attempt Detected [**]
+[Priority: 1]
+10/15-14:29:33.901234 203.0.113.75:45678 -> 192.168.1.150:8080
+
+[**] [1:2012456:0] ET POLICY Suspicious Telnet Connection [**]
+[Priority: 2]
+10/15-14:30:15.234567 192.168.1.80:52100 -> 10.0.0.75:23
+
+[**] [1:2008765:0] ET MALWARE Possible Ransomware Activity [**]
+[Priority: 1]
+10/15-14:31:42.567890 192.168.1.100:55000 -> 198.51.100.100:443
+
+[**] [1:2016543:0] ET EXPLOIT Cross-Site Scripting XSS Attempt [**]
+[Priority: 2]
+10/15-14:32:28.890123 203.0.113.90:12345 -> 192.168.1.110:80
+
+[**] [1:2007654:0] ET POLICY Suspicious SMTP Relay Activity [**]
+[Priority: 3]
+10/15-14:33:55.123456 192.168.1.120:49500 -> 198.51.100.50:25

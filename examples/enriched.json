@@ -28,6 +28,48 @@
     ]
   },
   {
+    "timestamp": "2025-10-15T14:25:45.567890",
+    "sid": 2014876,
+    "msg": "ET EXPLOIT Possible SQL Injection Attempt",
+    "priority": 1,
+    "src_ip": "203.0.113.55",
+    "src_port": 12345,
+    "dst_ip": "192.168.1.100",
+    "dst_port": 80,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:29:33.901234",
+    "sid": 2015234,
+    "msg": "ET EXPLOIT Buffer Overflow Attempt Detected",
+    "priority": 1,
+    "src_ip": "203.0.113.75",
+    "src_port": 45678,
+    "dst_ip": "192.168.1.150",
+    "dst_port": 8080,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:31:42.567890",
+    "sid": 2008765,
+    "msg": "ET MALWARE Possible Ransomware Activity",
+    "priority": 1,
+    "src_ip": "192.168.1.100",
+    "src_port": 55000,
+    "dst_ip": "198.51.100.100",
+    "dst_port": 443,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
     "timestamp": "2025-10-15T14:24:01.234567",
     "sid": 2010937,
     "msg": "ET POLICY Suspicious inbound to MSSQL port 1433",
@@ -42,13 +84,55 @@
     ]
   },
   {
-    "timestamp": "2025-10-15T14:25:45.567890",
-    "sid": 2014876,
-    "msg": "ET EXPLOIT Possible SQL Injection Attempt",
-    "priority": 1,
-    "src_ip": "203.0.113.55",
+    "timestamp": "2025-10-15T14:27:12.345678",
+    "sid": 2011807,
+    "msg": "ET MALWARE Suspicious DNS Query",
+    "priority": 2,
+    "src_ip": "192.168.1.40",
+    "src_port": 53241,
+    "dst_ip": "8.8.8.8",
+    "dst_port": 53,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:28:05.678901",
+    "sid": 2009910,
+    "msg": "ET POLICY Suspicious FTP Connection",
+    "priority": 2,
+    "src_ip": "192.168.1.60",
+    "src_port": 49200,
+    "dst_ip": "10.0.0.50",
+    "dst_port": 21,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:30:15.234567",
+    "sid": 2012456,
+    "msg": "ET POLICY Suspicious Telnet Connection",
+    "priority": 2,
+    "src_ip": "192.168.1.80",
+    "src_port": 52100,
+    "dst_ip": "10.0.0.75",
+    "dst_port": 23,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:32:28.890123",
+    "sid": 2016543,
+    "msg": "ET EXPLOIT Cross-Site Scripting XSS Attempt",
+    "priority": 2,
+    "src_ip": "203.0.113.90",
     "src_port": 12345,
-    "dst_ip": "192.168.1.100",
+    "dst_ip": "192.168.1.110",
     "dst_port": 80,
     "explanation": "No explanation found.",
     "recommended_action": [
@@ -64,6 +148,20 @@
     "src_port": 55555,
     "dst_ip": "198.51.100.200",
     "dst_port": 443,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:33:55.123456",
+    "sid": 2007654,
+    "msg": "ET POLICY Suspicious SMTP Relay Activity",
+    "priority": 3,
+    "src_ip": "192.168.1.120",
+    "src_port": 49500,
+    "dst_ip": "198.51.100.50",
+    "dst_port": 25,
     "explanation": "No explanation found.",
     "recommended_action": [
       "Investigate manually."

@@ -9,7 +9,7 @@ from src import parser, normalizer, timeline, explainer, report
 EXPLAINER_FILE = 'lookup/explainer.yaml'
 
 def main():
-    input_file = 'examples/sample_fast_3.log'
+    input_file = 'examples/sample_fast_4.log'
     output_json = 'examples/enriched.json'
     output_html = 'examples/report.html'
 
@@ -27,6 +27,9 @@ def main():
     # Step 4: Enrich alerts
     expl_dict = explainer.load_explainer(EXPLAINER_FILE)
     enriched_alerts = explainer.enrich_alerts(flat_alerts, expl_dict)
+
+    # Step 4.5: Sort by priority
+    enriched_alerts = sorted(enriched_alerts, key=lambda x: x['priority'])
 
     # Step 5: Save JSON
     with open(output_json, 'w') as f:
