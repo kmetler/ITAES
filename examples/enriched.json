@@ -1,1 +1,72 @@
-[]
+[
+  {
+    "timestamp": "2025-10-15T14:22:33.456789",
+    "sid": 2000210,
+    "msg": "ET POLICY Outbound SSH Connection",
+    "priority": 1,
+    "src_ip": "192.168.1.50",
+    "src_port": 54321,
+    "dst_ip": "203.0.113.10",
+    "dst_port": 22,
+    "explanation": "Outbound SSH detected; may indicate unauthorized remote access.",
+    "recommended_action": [
+      "Verify user/host identity and check SSH logs."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:23:15.789012",
+    "sid": 2013029,
+    "msg": "ET MALWARE Win32/Conficker.B!C Worm Outbound Connection",
+    "priority": 1,
+    "src_ip": "192.168.1.75",
+    "src_port": 49152,
+    "dst_ip": "198.51.100.45",
+    "dst_port": 445,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:24:01.234567",
+    "sid": 2010937,
+    "msg": "ET POLICY Suspicious inbound to MSSQL port 1433",
+    "priority": 2,
+    "src_ip": "10.0.0.100",
+    "src_port": 52341,
+    "dst_ip": "192.168.1.200",
+    "dst_port": 1433,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:25:45.567890",
+    "sid": 2014876,
+    "msg": "ET EXPLOIT Possible SQL Injection Attempt",
+    "priority": 1,
+    "src_ip": "203.0.113.55",
+    "src_port": 12345,
+    "dst_ip": "192.168.1.100",
+    "dst_port": 80,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-15T14:26:30.123456",
+    "sid": 2003055,
+    "msg": "ET POLICY Suspicious User-Agent in HTTP Request",
+    "priority": 3,
+    "src_ip": "192.168.1.30",
+    "src_port": 55555,
+    "dst_ip": "198.51.100.200",
+    "dst_port": 443,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  }
+]
