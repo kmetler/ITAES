@@ -6,10 +6,10 @@
 import re
 from dateutil.parser import parse as dtparse
 
-# Regex for a fast.log alert block
+# More lenient regex for a fast.log alert block
 FAST_ALERT_RE = re.compile(
-    r'\[\*\*\] \[(?P<class_rev>[\d:]+)\] (?P<msg>.+?) \[\*\*\]\n'
-    r'\[Priority: (?P<priority>\d+)\]\s*\n'
+    r'\[\*\*\]\s*\[(?P<class_rev>\d+:\d+:\d+)\]\s+(?P<msg>.+?)\s*\[\*\*\]\s*'
+    r'\[Priority:\s*(?P<priority>\d+)\]\s*'
     r'(?P<timestamp>\d{2}/\d{2}-\d{2}:\d{2}:\d{2}\.\d+)\s+'
     r'(?P<src>[\d\.]+)(?::(?P<src_port>\d+))?\s*->\s*'
     r'(?P<dst>[\d\.]+)(?::(?P<dst_port>\d+))?',
@@ -46,32 +46,55 @@ def parse_fast_alert(block_text):
 #     return alerts
 
 def parse_fast_log(file_path):
-    alerts = []
-    with open(file_path, 'r') as f:
-        lines = f.readlines()
+    with open(file_path, "r") as f:
+        content = f.read()
 
-    for i, line in enumerate(lines):
-        if '[**]' in line and 'detected' in line:
-            alert = {
-                'timestamp': dtparse('10/10-11:45:12.123456'),  # datetime object
-                'sid': 1000001,
-                'msg': 'ICMP test detected',
-                'priority': 0,
-                'src_ip': '192.168.1.10',
-                'src_port': None,
-                'dst_ip': '192.168.1.20',
-                'dst_port': None
-            }
-            alerts.append(alert)
-            alert2 = {
-                'timestamp': dtparse('10/30-13:15:43.789012'),
-                'sid': 2000002,
-                'msg': 'HTTP suspicious request',
-                'priority': 1,
-                'src_ip': '10.0.0.50',
-                'src_port': 54321,
-                'dst_ip': '192.168.1.100',
-                'dst_port': 80
-            }
-            alerts.append(alert2)
+    alerts = []
+    for m in FAST_ALERT_RE.finditer(content):
+        class_rev = m.group("class_rev")      # "1:1000001:0"
+        sid = int(class_rev.split(":")[1])    # extract SID
+
+        alert = {
+            "timestamp": dtparse(m.group("timestamp")),
+            "sid": sid,
+            "msg": m.group("msg").strip(),
+            "priority": int(m.group("priority")),
+            "src_ip": m.group("src"),
+            "src_port": m.group("src_port") or None,
+            "dst_ip": m.group("dst"),
+            "dst_port": m.group("dst_port") or None
+        }
+        alerts.append(alert)
+
     return alerts
+
+# def parse_fast_log(file_path):
+#     alerts = []
+#     with open(file_path, 'r') as f:
+#         lines = f.readlines()
+
+#     for i, line in enumerate(lines):
+#         if '[**]' in line and 'detected' in line:
+#             alert = {
+#                 'timestamp': dtparse('10/10-11:45:12.123456'),  # datetime object
+#                 'sid': 1000001,
+#                 'msg': 'ICMP test detected',
+#                 'priority': 0,
+#                 'src_ip': '192.168.1.10',
+#                 'src_port': None,
+#                 'dst_ip': '192.168.1.20',
+#                 'dst_port': None
+#             }
+#             alerts.append(alert)
+#             alert2 = {
+#                 'timestamp': dtparse('10/30-13:15:43.789012'),
+#                 'sid': 2000002,
+#                 'msg': 'HTTP suspicious request',
+#                 'priority': 1,
+#                 'src_ip': '10.0.0.50',
+#                 'src_port': 54321,
+#                 'dst_ip': '192.168.1.100',
+#                 'dst_port': 80
+#             }
+#             alerts.append(alert2)
+#     return alerts
