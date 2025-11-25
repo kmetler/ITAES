@@ -6,6 +6,104 @@
     - "Check if pings are expected from the source host."
     - "If suspicious, block IP and capture additional traffic."
 
+1000002:
+  msg: "ET SCAN Nmap Scripting Engine discovery"
+  explanation: "Nmap scan detected, potentially mapping network."
+  recommended_action:
+    - "Verify source host activity."
+    - "Consider blocking or monitoring the IP."
+
+1000003:
+  msg: "ET SCAN SYN Scan"
+  explanation: "SYN scan detected, attacker may be probing for open ports."
+  recommended_action:
+    - "Investigate scanning host."
+    - "Check firewall logs and block malicious IP."
+
+1000004:
+  msg: "ET POLICY Outbound SSH Connection"
+  explanation: "Outbound SSH detected; may indicate unauthorized remote access."
+  recommended_action:
+    - "Verify user/host identity."
+    - "Check SSH logs for unusual activity."
+
+1000005:
+  msg: "GPL DNS Zone Transfer Attempt"
+  explanation: "DNS zone transfer attempt detected; could expose internal DNS structure."
+  recommended_action:
+    - "Verify authorized transfers."
+    - "Block unauthorized requests."
+
+1000006:
+  msg: "ET WEB_SERVER Possible SQL Injection Attempt"
+  explanation: "Suspicious SQL query patterns detected, may indicate attack."
+  recommended_action:
+    - "Review web server logs."
+    - "Validate input handling and patch vulnerable apps."
+
+1000007:
+  msg: "ET WEB_CLIENT Adobe Flash Exploit"
+  explanation: "Attempt to exploit Adobe Flash vulnerability."
+  recommended_action:
+    - "Check affected host and patch if necessary."
+    - "Monitor for additional suspicious activity."
+
+1000008:
+  msg: "ET TROJAN Backdoor Attempt"
+  explanation: "Backdoor traffic detected; possible malware infection."
+  recommended_action:
+    - "Isolate affected host."
+    - "Run malware scan and check network activity."
+
+1000009:
+  msg: "ET POLICY Outbound SMTP Email Spamming"
+  explanation: "Excessive outbound emails detected; may indicate spam or compromised host."
+  recommended_action:
+    - "Check host for malware."
+    - "Investigate sending patterns and block if necessary."
+
+1000010:
+  msg: "ET MALWARE CnC Traffic Detected"
+  explanation: "Traffic to known malware command and control server detected."
+  recommended_action:
+    - "Isolate host."
+    - "Investigate infection and block CnC IPs."
+
+1000011:
+  msg: "GPL SMB Lsass Exploit Attempt"
+  explanation: "Attempt to exploit SMB LSASS vulnerability detected."
+  recommended_action:
+    - "Patch vulnerable systems."
+    - "Check firewall logs for intrusion attempts."
+
+1000012:
+  msg: "ET SCAN FIN Scan"
+  explanation: "FIN scan detected; attacker probing for open ports stealthily."
+  recommended_action:
+    - "Monitor scanning host."
+    - "Check network for abnormal activity."
+
+1000013:
+  msg: "ET POLICY Suspicious TFTP Traffic"
+  explanation: "Unexpected TFTP traffic detected; may indicate data exfiltration."
+  recommended_action:
+    - "Verify legitimate TFTP usage."
+    - "Block suspicious TFTP activity."
+
+1000014:
+  msg: "ET MALWARE Ransomware Behavior"
+  explanation: "Indicators of ransomware activity detected on host."
+  recommended_action:
+    - "Isolate host immediately."
+    - "Check backups and monitor for encryption behavior."
+
+1000015:
+  msg: "ET EXPLOIT Microsoft Office Exploit"
+  explanation: "Attempt to exploit Microsoft Office vulnerability."
+  recommended_action:
+    - "Patch MS Office."
+    - "Review affected host for compromise."
+
 2000210:
   msg: "ET POLICY Outbound SSH Connection"
   explanation: "Outbound SSH detected; may indicate unauthorized remote access."
