@@ -9,7 +9,7 @@ from src import parser, normalizer, timeline, explainer, report
 EXPLAINER_FILE = 'lookup/explainer.yaml'
 
 def main():
-    input_file = 'examples/sample_fast.log'
+    input_file = 'examples/sample_fast_2.log'
     output_json = 'examples/enriched.json'
     output_html = 'examples/report.html'
 
