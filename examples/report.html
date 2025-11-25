@@ -37,7 +37,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 16px;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
         .stat-card {
             background: rgba(30, 41, 59, 0.8);
@@ -58,6 +58,103 @@
             font-weight: 700;
             color: #3b82f6;
         }
+
+        /* Timeline styles */
+        .timeline {
+            margin-bottom: 32px;
+        }
+        .timeline-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+        .timeline-subtitle {
+            font-size: 13px;
+            color: #94a3b8;
+            margin-bottom: 16px;
+        }
+
+        .timeline-track {
+            position: relative;
+            margin-left: 16px;
+            padding-left: 24px;
+        }
+
+        .timeline-track::before {
+            content: "";
+            position: absolute;
+            left: 4px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(
+                to bottom,
+                rgba(148, 163, 184, 0.7),
+                rgba(30, 64, 175, 0.7)
+            );
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 16px;
+            padding: 12px 16px 12px 18px;
+            background: rgba(15, 23, 42, 0.95);
+            border-radius: 8px;
+            border: 1px solid rgba(30, 64, 175, 0.5);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: -23px;
+            top: 18px;
+            width: 12px;
+            height: 12px;
+            border-radius: 999px;
+            border: 2px solid #0f172a;
+            background: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(15, 23, 42, 0.9);
+        }
+
+        .timeline-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+        .timeline-time-range {
+            font-size: 13px;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+        .timeline-badge {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            color: #e2e8f0;
+        }
+        .timeline-meta {
+            font-size: 12px;
+            color: #94a3b8;
+        }
+        .timeline-meta strong {
+            color: #cbd5e1;
+        }
+
+        /* Priority colors for timeline nodes */
+        .timeline-item.priority-1 .timeline-dot { background: #ef4444; }
+        .timeline-item.priority-2 .timeline-dot { background: #f59e0b; }
+        .timeline-item.priority-3 .timeline-dot { background: #facc15; }
+        .timeline-item.priority-0 .timeline-dot { background: #10b981; }
+
         .alerts-grid {
             display: grid;
             gap: 16px;
@@ -74,10 +171,12 @@
             border-left-color: #60a5fa;
             box-shadow: 0 8px 16px rgba(59, 130, 246, 0.1);
         }
-        .alert-card.priority-1 { border-left-color: #ef4444; }   /* red */
-        .alert-card.priority-2 { border-left-color: #f59e0b; }   /* orange */
-        .alert-card.priority-3 { border-left-color: #facc15; }   /* yellow */
-        .alert-card.priority-0 { border-left-color: #10b981; }   /* green */
+
+        /* Priority colors for alerts */
+        .alert-card.priority-1 { border-left-color: #ef4444; }   /* red - critical */
+        .alert-card.priority-2 { border-left-color: #f59e0b; }   /* orange - high */
+        .alert-card.priority-3 { border-left-color: #facc15; }   /* yellow - medium */
+        .alert-card.priority-0 { border-left-color: #10b981; }   /* green - info */
 
         .alert-header {
             display: flex;
@@ -178,24 +277,133 @@
     <div class="stats">
         <div class="stat-card">
             <div class="stat-label">Total Alerts</div>
-            <div class="stat-value">12</div>
+            <div class="stat-value">20</div>
         </div>
     </div>
+
+    
+    <div class="timeline">
+        <div class="timeline-title">Incident Timeline</div>
+        <div class="timeline-subtitle">
+            Alerts grouped into short episodes so you can quickly see how the incident unfolded.
+        </div>
+        <div class="timeline-track">
+            
+            <div class="timeline-item priority-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-item-header">
+                    <div class="timeline-time-range">
+                        2025-10-25T14:00:00.123456 to 2025-10-25T14:04:45.456789
+                    </div>
+                    <div class="timeline-badge">
+                        Critical · 4 alerts
+                    </div>
+                </div>
+                <div class="timeline-meta">
+                    <strong>Sources:</strong> 192.168.1.60, 203.0.113.10, 203.0.113.20, 203.0.113.30
+                    &nbsp;|&nbsp;
+                    <strong>Destinations:</strong> 192.168.1.0, 192.168.1.100, 192.168.1.50, 198.51.100.75
+                    &nbsp;|&nbsp;
+                    <strong>Duration:</strong> 4.8 minutes
+                </div>
+            </div>
+            
+            <div class="timeline-item priority-2">
+                <div class="timeline-dot"></div>
+                <div class="timeline-item-header">
+                    <div class="timeline-time-range">
+                        2025-10-25T14:06:15.567890 to 2025-10-25T14:10:45.890123
+                    </div>
+                    <div class="timeline-badge">
+                        High · 4 alerts
+                    </div>
+                </div>
+                <div class="timeline-meta">
+                    <strong>Sources:</strong> 192.168.1.70, 192.168.1.75, 192.168.1.80, 203.0.113.50
+                    &nbsp;|&nbsp;
+                    <strong>Destinations:</strong> 192.168.1.200, 198.51.100.100, 203.0.113.40
+                    &nbsp;|&nbsp;
+                    <strong>Duration:</strong> 4.5 minutes
+                </div>
+            </div>
+            
+            <div class="timeline-item priority-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-item-header">
+                    <div class="timeline-time-range">
+                        2025-10-25T14:12:30.901234 to 2025-10-25T14:17:15.234567
+                    </div>
+                    <div class="timeline-badge">
+                        Critical · 4 alerts
+                    </div>
+                </div>
+                <div class="timeline-meta">
+                    <strong>Sources:</strong> 192.168.1.90, 203.0.113.60, 203.0.113.70
+                    &nbsp;|&nbsp;
+                    <strong>Destinations:</strong> 192.168.1.110, 192.168.1.150, 198.51.100.200, 198.51.100.50
+                    &nbsp;|&nbsp;
+                    <strong>Duration:</strong> 4.7 minutes
+                </div>
+            </div>
+            
+            <div class="timeline-item priority-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-item-header">
+                    <div class="timeline-time-range">
+                        2025-10-25T14:18:45.345678 to 2025-10-25T14:23:30.678901
+                    </div>
+                    <div class="timeline-badge">
+                        Critical · 4 alerts
+                    </div>
+                </div>
+                <div class="timeline-meta">
+                    <strong>Sources:</strong> 192.168.1.120, 192.168.1.130, 192.168.1.140, 203.0.113.90
+                    &nbsp;|&nbsp;
+                    <strong>Destinations:</strong> 10.0.0.50, 192.168.1.200, 198.51.100.200, 203.0.113.80
+                    &nbsp;|&nbsp;
+                    <strong>Duration:</strong> 4.8 minutes
+                </div>
+            </div>
+            
+            <div class="timeline-item priority-1">
+                <div class="timeline-dot"></div>
+                <div class="timeline-item-header">
+                    <div class="timeline-time-range">
+                        2025-10-25T14:25:15.789012 to 2025-10-25T14:30:00.012345
+                    </div>
+                    <div class="timeline-badge">
+                        Critical · 4 alerts
+                    </div>
+                </div>
+                <div class="timeline-meta">
+                    <strong>Sources:</strong> 192.168.1.140, 192.168.1.160, 192.168.1.200, 203.0.113.100
+                    &nbsp;|&nbsp;
+                    <strong>Destinations:</strong> 10.0.0.50, 192.168.1.180, 198.51.100.100, 198.51.100.150
+                    &nbsp;|&nbsp;
+                    <strong>Duration:</strong> 4.7 minutes
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
     
     <div class="alerts-grid">
     
         <div class="alert-card priority-1">
             <div class="alert-header">
-                <div class="alert-title">ET POLICY Outbound SSH Connection</div>
+                <div class="alert-title">ICMP test detected</div>
                 <div class="alert-meta">
-                    <span class="badge">SID: 2000210</span>
+                    <span class="badge">SID: 1000001</span>
                 </div>
             </div>
             
             <div class="alert-body">
                 <div class="alert-field">
                     <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:22:33.456789</div>
+                    <div class="field-value">2025-10-25T14:00:00.123456</div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Priority</div>
@@ -203,11 +411,481 @@
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Source</div>
-                    <div class="field-value">192.168.1.50:54321</div>
+                    <div class="field-value">
+                        203.0.113.10
+                    </div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Destination</div>
-                    <div class="field-value">203.0.113.10:22</div>
+                    <div class="field-value">
+                        192.168.1.50
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> Unusual ICMP traffic possibly used for reconnaissance.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Check if pings are expected from the source host.</li>
+                
+                    <li>If suspicious, block IP and capture additional traffic.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-1">
+            <div class="alert-header">
+                <div class="alert-title">ET SCAN Nmap Scripting Engine discovery</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 1000002</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:03:00.345678</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">1</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        203.0.113.20:54321
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        192.168.1.100:80
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> Nmap scan detected, potentially mapping network.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Verify source host activity.</li>
+                
+                    <li>Consider blocking or monitoring the IP.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-1">
+            <div class="alert-header">
+                <div class="alert-title">ET SCAN SYN Scan</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 1000003</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:04:45.456789</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">1</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        203.0.113.30:49152
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        192.168.1.0:443
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> SYN scan detected, attacker may be probing for open ports.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Investigate scanning host.</li>
+                
+                    <li>Check firewall logs and block malicious IP.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-1">
+            <div class="alert-header">
+                <div class="alert-title">ET WEB_SERVER Possible SQL Injection Attempt</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 1000006</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:12:30.901234</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">1</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        203.0.113.60:12345
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        192.168.1.110:80
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> Suspicious SQL query patterns detected, may indicate attack.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Review web server logs.</li>
+                
+                    <li>Validate input handling and patch vulnerable apps.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-1">
+            <div class="alert-header">
+                <div class="alert-title">ET TROJAN Backdoor Attempt</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 1000008</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:14:00.012345</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">1</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        203.0.113.70:45678
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        192.168.1.150:8080
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> Backdoor traffic detected; possible malware infection.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Isolate affected host.</li>
+                
+                    <li>Run malware scan and check network activity.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-1">
+            <div class="alert-header">
+                <div class="alert-title">Potential Data Exfiltration</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 4444444</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:15:30.123456</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">1</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        192.168.1.90:49500
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        198.51.100.200:443
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> No explanation found.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Investigate manually.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-1">
+            <div class="alert-header">
+                <div class="alert-title">ET MALWARE CnC Traffic Detected</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 1000010</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:18:45.345678</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">1</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        192.168.1.120:52341
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        198.51.100.200:443
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> Traffic to known malware command and control server detected.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Isolate host.</li>
+                
+                    <li>Investigate infection and block CnC IPs.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-1">
+            <div class="alert-header">
+                <div class="alert-title">ET MALWARE Ransomware Behavior</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 1000014</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:25:15.789012</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">1</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        192.168.1.140:55555
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        198.51.100.100:443
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> Indicators of ransomware activity detected on host.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Isolate host immediately.</li>
+                
+                    <li>Check backups and monitor for encryption behavior.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-1">
+            <div class="alert-header">
+                <div class="alert-title">ET EXPLOIT Microsoft Office Exploit</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 1000015</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:28:30.901234</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">1</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        203.0.113.100:12345
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        192.168.1.180:80
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> Attempt to exploit Microsoft Office vulnerability.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Patch MS Office.</li>
+                
+                    <li>Review affected host for compromise.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-2">
+            <div class="alert-header">
+                <div class="alert-title">Unidentified Protocol Activity</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 7777777</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:01:30.234567</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">2</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        192.168.1.60:49152
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        198.51.100.75:9999
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> No explanation found.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Investigate manually.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-2">
+            <div class="alert-header">
+                <div class="alert-title">ET POLICY Outbound SSH Connection</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 1000004</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:07:50.678901</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">2</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        192.168.1.75:52100
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        203.0.113.40:22
+                    </div>
                 </div>
             </div>
             
@@ -219,159 +897,89 @@
                 <div class="actions-title">Recommended Actions</div>
                 <ul class="actions-list">
                 
-                    <li>Verify user/host identity and check SSH logs.</li>
+                    <li>Verify user/host identity.</li>
+                
+                    <li>Check SSH logs for unusual activity.</li>
                 
                 </ul>
             </div>
         </div>
     
-        <div class="alert-card priority-1">
+        <div class="alert-card priority-2">
             <div class="alert-header">
-                <div class="alert-title">ET MALWARE Win32/Conficker.B!C Worm Outbound Connection</div>
+                <div class="alert-title">GPL DNS Zone Transfer Attempt</div>
                 <div class="alert-meta">
-                    <span class="badge">SID: 2013029</span>
+                    <span class="badge">SID: 1000005</span>
                 </div>
             </div>
             
             <div class="alert-body">
                 <div class="alert-field">
                     <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:23:15.789012</div>
+                    <div class="field-value">2025-10-25T14:09:20.789012</div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Priority</div>
-                    <div class="field-value">1</div>
+                    <div class="field-value">2</div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Source</div>
-                    <div class="field-value">192.168.1.75:49152</div>
+                    <div class="field-value">
+                        203.0.113.50:53241
+                    </div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Destination</div>
-                    <div class="field-value">198.51.100.45:445</div>
+                    <div class="field-value">
+                        192.168.1.200:53
+                    </div>
                 </div>
             </div>
             
             <div class="alert-explanation">
-                <strong>Analysis:</strong> No explanation found.
+                <strong>Analysis:</strong> DNS zone transfer attempt detected; could expose internal DNS structure.
             </div>
             
             <div class="alert-actions">
                 <div class="actions-title">Recommended Actions</div>
                 <ul class="actions-list">
                 
-                    <li>Investigate manually.</li>
+                    <li>Verify authorized transfers.</li>
+                
+                    <li>Block unauthorized requests.</li>
                 
                 </ul>
             </div>
         </div>
     
-        <div class="alert-card priority-1">
+        <div class="alert-card priority-2">
             <div class="alert-header">
-                <div class="alert-title">ET EXPLOIT Possible SQL Injection Attempt</div>
+                <div class="alert-title">Unusual Port Usage Detected</div>
                 <div class="alert-meta">
-                    <span class="badge">SID: 2014876</span>
+                    <span class="badge">SID: 6666666</span>
                 </div>
             </div>
             
             <div class="alert-body">
                 <div class="alert-field">
                     <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:25:45.567890</div>
+                    <div class="field-value">2025-10-25T14:10:45.890123</div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Priority</div>
-                    <div class="field-value">1</div>
+                    <div class="field-value">2</div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Source</div>
-                    <div class="field-value">203.0.113.55:12345</div>
+                    <div class="field-value">
+                        192.168.1.80:55000
+                    </div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Destination</div>
-                    <div class="field-value">192.168.1.100:80</div>
-                </div>
-            </div>
-            
-            <div class="alert-explanation">
-                <strong>Analysis:</strong> No explanation found.
-            </div>
-            
-            <div class="alert-actions">
-                <div class="actions-title">Recommended Actions</div>
-                <ul class="actions-list">
-                
-                    <li>Investigate manually.</li>
-                
-                </ul>
-            </div>
-        </div>
-    
-        <div class="alert-card priority-1">
-            <div class="alert-header">
-                <div class="alert-title">ET EXPLOIT Buffer Overflow Attempt Detected</div>
-                <div class="alert-meta">
-                    <span class="badge">SID: 2015234</span>
-                </div>
-            </div>
-            
-            <div class="alert-body">
-                <div class="alert-field">
-                    <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:29:33.901234</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Priority</div>
-                    <div class="field-value">1</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Source</div>
-                    <div class="field-value">203.0.113.75:45678</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Destination</div>
-                    <div class="field-value">192.168.1.150:8080</div>
-                </div>
-            </div>
-            
-            <div class="alert-explanation">
-                <strong>Analysis:</strong> No explanation found.
-            </div>
-            
-            <div class="alert-actions">
-                <div class="actions-title">Recommended Actions</div>
-                <ul class="actions-list">
-                
-                    <li>Investigate manually.</li>
-                
-                </ul>
-            </div>
-        </div>
-    
-        <div class="alert-card priority-1">
-            <div class="alert-header">
-                <div class="alert-title">ET MALWARE Possible Ransomware Activity</div>
-                <div class="alert-meta">
-                    <span class="badge">SID: 2008765</span>
-                </div>
-            </div>
-            
-            <div class="alert-body">
-                <div class="alert-field">
-                    <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:31:42.567890</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Priority</div>
-                    <div class="field-value">1</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Source</div>
-                    <div class="field-value">192.168.1.100:55000</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Destination</div>
-                    <div class="field-value">198.51.100.100:443</div>
+                    <div class="field-value">
+                        198.51.100.100:31337
+                    </div>
                 </div>
             </div>
             
@@ -391,16 +999,16 @@
     
         <div class="alert-card priority-2">
             <div class="alert-header">
-                <div class="alert-title">ET POLICY Suspicious inbound to MSSQL port 1433</div>
+                <div class="alert-title">ET POLICY Outbound SMTP Email Spamming</div>
                 <div class="alert-meta">
-                    <span class="badge">SID: 2010937</span>
+                    <span class="badge">SID: 1000009</span>
                 </div>
             </div>
             
             <div class="alert-body">
                 <div class="alert-field">
                     <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:24:01.234567</div>
+                    <div class="field-value">2025-10-25T14:17:15.234567</div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Priority</div>
@@ -408,11 +1016,109 @@
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Source</div>
-                    <div class="field-value">10.0.0.100:52341</div>
+                    <div class="field-value">
+                        192.168.1.90:49500
+                    </div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Destination</div>
-                    <div class="field-value">192.168.1.200:1433</div>
+                    <div class="field-value">
+                        198.51.100.50:25
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> Excessive outbound emails detected; may indicate spam or compromised host.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Check host for malware.</li>
+                
+                    <li>Investigate sending patterns and block if necessary.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-2">
+            <div class="alert-header">
+                <div class="alert-title">ET SCAN FIN Scan</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 1000012</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:22:00.567890</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">2</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        203.0.113.90:54000
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        192.168.1.200:22
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> FIN scan detected; attacker probing for open ports stealthily.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Monitor scanning host.</li>
+                
+                    <li>Check network for abnormal activity.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-2">
+            <div class="alert-header">
+                <div class="alert-title">Anomalous File Transfer Pattern</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 2222222</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:23:30.678901</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">2</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        192.168.1.140:49152
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        10.0.0.50:445
+                    </div>
                 </div>
             </div>
             
@@ -432,16 +1138,16 @@
     
         <div class="alert-card priority-2">
             <div class="alert-header">
-                <div class="alert-title">ET MALWARE Suspicious DNS Query</div>
+                <div class="alert-title">Suspicious Registry Modification Attempt</div>
                 <div class="alert-meta">
-                    <span class="badge">SID: 2011807</span>
+                    <span class="badge">SID: 1111111</span>
                 </div>
             </div>
             
             <div class="alert-body">
                 <div class="alert-field">
                     <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:27:12.345678</div>
+                    <div class="field-value">2025-10-25T14:30:00.012345</div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Priority</div>
@@ -449,134 +1155,15 @@
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Source</div>
-                    <div class="field-value">192.168.1.40:53241</div>
+                    <div class="field-value">
+                        192.168.1.200:49152
+                    </div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Destination</div>
-                    <div class="field-value">8.8.8.8:53</div>
-                </div>
-            </div>
-            
-            <div class="alert-explanation">
-                <strong>Analysis:</strong> No explanation found.
-            </div>
-            
-            <div class="alert-actions">
-                <div class="actions-title">Recommended Actions</div>
-                <ul class="actions-list">
-                
-                    <li>Investigate manually.</li>
-                
-                </ul>
-            </div>
-        </div>
-    
-        <div class="alert-card priority-2">
-            <div class="alert-header">
-                <div class="alert-title">ET POLICY Suspicious FTP Connection</div>
-                <div class="alert-meta">
-                    <span class="badge">SID: 2009910</span>
-                </div>
-            </div>
-            
-            <div class="alert-body">
-                <div class="alert-field">
-                    <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:28:05.678901</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Priority</div>
-                    <div class="field-value">2</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Source</div>
-                    <div class="field-value">192.168.1.60:49200</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Destination</div>
-                    <div class="field-value">10.0.0.50:21</div>
-                </div>
-            </div>
-            
-            <div class="alert-explanation">
-                <strong>Analysis:</strong> No explanation found.
-            </div>
-            
-            <div class="alert-actions">
-                <div class="actions-title">Recommended Actions</div>
-                <ul class="actions-list">
-                
-                    <li>Investigate manually.</li>
-                
-                </ul>
-            </div>
-        </div>
-    
-        <div class="alert-card priority-2">
-            <div class="alert-header">
-                <div class="alert-title">ET POLICY Suspicious Telnet Connection</div>
-                <div class="alert-meta">
-                    <span class="badge">SID: 2012456</span>
-                </div>
-            </div>
-            
-            <div class="alert-body">
-                <div class="alert-field">
-                    <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:30:15.234567</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Priority</div>
-                    <div class="field-value">2</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Source</div>
-                    <div class="field-value">192.168.1.80:52100</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Destination</div>
-                    <div class="field-value">10.0.0.75:23</div>
-                </div>
-            </div>
-            
-            <div class="alert-explanation">
-                <strong>Analysis:</strong> No explanation found.
-            </div>
-            
-            <div class="alert-actions">
-                <div class="actions-title">Recommended Actions</div>
-                <ul class="actions-list">
-                
-                    <li>Investigate manually.</li>
-                
-                </ul>
-            </div>
-        </div>
-    
-        <div class="alert-card priority-2">
-            <div class="alert-header">
-                <div class="alert-title">ET EXPLOIT Cross-Site Scripting XSS Attempt</div>
-                <div class="alert-meta">
-                    <span class="badge">SID: 2016543</span>
-                </div>
-            </div>
-            
-            <div class="alert-body">
-                <div class="alert-field">
-                    <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:32:28.890123</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Priority</div>
-                    <div class="field-value">2</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Source</div>
-                    <div class="field-value">203.0.113.90:12345</div>
-                </div>
-                <div class="alert-field">
-                    <div class="field-label">Destination</div>
-                    <div class="field-value">192.168.1.110:80</div>
+                    <div class="field-value">
+                        198.51.100.150:135
+                    </div>
                 </div>
             </div>
             
@@ -596,16 +1183,16 @@
     
         <div class="alert-card priority-3">
             <div class="alert-header">
-                <div class="alert-title">ET POLICY Suspicious User-Agent in HTTP Request</div>
+                <div class="alert-title">Suspicious Peer-to-Peer Connection</div>
                 <div class="alert-meta">
-                    <span class="badge">SID: 2003055</span>
+                    <span class="badge">SID: 8888888</span>
                 </div>
             </div>
             
             <div class="alert-body">
                 <div class="alert-field">
                     <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:26:30.123456</div>
+                    <div class="field-value">2025-10-25T14:06:15.567890</div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Priority</div>
@@ -613,11 +1200,15 @@
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Source</div>
-                    <div class="field-value">192.168.1.30:55555</div>
+                    <div class="field-value">
+                        192.168.1.70:52100
+                    </div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Destination</div>
-                    <div class="field-value">198.51.100.200:443</div>
+                    <div class="field-value">
+                        203.0.113.40:6881
+                    </div>
                 </div>
             </div>
             
@@ -637,16 +1228,16 @@
     
         <div class="alert-card priority-3">
             <div class="alert-header">
-                <div class="alert-title">ET POLICY Suspicious SMTP Relay Activity</div>
+                <div class="alert-title">Suspicious Encrypted Tunnel Activity</div>
                 <div class="alert-meta">
-                    <span class="badge">SID: 2007654</span>
+                    <span class="badge">SID: 5555555</span>
                 </div>
             </div>
             
             <div class="alert-body">
                 <div class="alert-field">
                     <div class="field-label">Timestamp</div>
-                    <div class="field-value">2025-10-15T14:33:55.123456</div>
+                    <div class="field-value">2025-10-25T14:20:20.456789</div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Priority</div>
@@ -654,11 +1245,60 @@
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Source</div>
-                    <div class="field-value">192.168.1.120:49500</div>
+                    <div class="field-value">
+                        192.168.1.130:49200
+                    </div>
                 </div>
                 <div class="alert-field">
                     <div class="field-label">Destination</div>
-                    <div class="field-value">198.51.100.50:25</div>
+                    <div class="field-value">
+                        203.0.113.80:1194
+                    </div>
+                </div>
+            </div>
+            
+            <div class="alert-explanation">
+                <strong>Analysis:</strong> No explanation found.
+            </div>
+            
+            <div class="alert-actions">
+                <div class="actions-title">Recommended Actions</div>
+                <ul class="actions-list">
+                
+                    <li>Investigate manually.</li>
+                
+                </ul>
+            </div>
+        </div>
+    
+        <div class="alert-card priority-3">
+            <div class="alert-header">
+                <div class="alert-title">Anomalous Network Traffic Pattern</div>
+                <div class="alert-meta">
+                    <span class="badge">SID: 3333333</span>
+                </div>
+            </div>
+            
+            <div class="alert-body">
+                <div class="alert-field">
+                    <div class="field-label">Timestamp</div>
+                    <div class="field-value">2025-10-25T14:26:45.890123</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Priority</div>
+                    <div class="field-value">3</div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Source</div>
+                    <div class="field-value">
+                        192.168.1.160:49152
+                    </div>
+                </div>
+                <div class="alert-field">
+                    <div class="field-label">Destination</div>
+                    <div class="field-value">
+                        10.0.0.50:8888
+                    </div>
                 </div>
             </div>
             

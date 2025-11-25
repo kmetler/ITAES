@@ -1,151 +1,158 @@
 [
   {
-    "timestamp": "2025-10-15T14:22:33.456789",
-    "sid": 2000210,
-    "msg": "ET POLICY Outbound SSH Connection",
+    "timestamp": "2025-10-25T14:00:00.123456",
+    "sid": 1000001,
+    "msg": "ICMP test detected",
     "priority": 1,
-    "src_ip": "192.168.1.50",
+    "src_ip": "203.0.113.10",
+    "src_port": 0,
+    "dst_ip": "192.168.1.50",
+    "dst_port": 0,
+    "explanation": "Unusual ICMP traffic possibly used for reconnaissance.",
+    "recommended_action": [
+      "Check if pings are expected from the source host.",
+      "If suspicious, block IP and capture additional traffic."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:01:30.234567",
+    "sid": 7777777,
+    "msg": "Unidentified Protocol Activity",
+    "priority": 2,
+    "src_ip": "192.168.1.60",
+    "src_port": 49152,
+    "dst_ip": "198.51.100.75",
+    "dst_port": 9999,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:03:00.345678",
+    "sid": 1000002,
+    "msg": "ET SCAN Nmap Scripting Engine discovery",
+    "priority": 1,
+    "src_ip": "203.0.113.20",
     "src_port": 54321,
-    "dst_ip": "203.0.113.10",
+    "dst_ip": "192.168.1.100",
+    "dst_port": 80,
+    "explanation": "Nmap scan detected, potentially mapping network.",
+    "recommended_action": [
+      "Verify source host activity.",
+      "Consider blocking or monitoring the IP."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:04:45.456789",
+    "sid": 1000003,
+    "msg": "ET SCAN SYN Scan",
+    "priority": 1,
+    "src_ip": "203.0.113.30",
+    "src_port": 49152,
+    "dst_ip": "192.168.1.0",
+    "dst_port": 443,
+    "explanation": "SYN scan detected, attacker may be probing for open ports.",
+    "recommended_action": [
+      "Investigate scanning host.",
+      "Check firewall logs and block malicious IP."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:06:15.567890",
+    "sid": 8888888,
+    "msg": "Suspicious Peer-to-Peer Connection",
+    "priority": 3,
+    "src_ip": "192.168.1.70",
+    "src_port": 52100,
+    "dst_ip": "203.0.113.40",
+    "dst_port": 6881,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:07:50.678901",
+    "sid": 1000004,
+    "msg": "ET POLICY Outbound SSH Connection",
+    "priority": 2,
+    "src_ip": "192.168.1.75",
+    "src_port": 52100,
+    "dst_ip": "203.0.113.40",
     "dst_port": 22,
     "explanation": "Outbound SSH detected; may indicate unauthorized remote access.",
     "recommended_action": [
-      "Verify user/host identity and check SSH logs."
+      "Verify user/host identity.",
+      "Check SSH logs for unusual activity."
     ]
   },
   {
-    "timestamp": "2025-10-15T14:23:15.789012",
-    "sid": 2013029,
-    "msg": "ET MALWARE Win32/Conficker.B!C Worm Outbound Connection",
-    "priority": 1,
-    "src_ip": "192.168.1.75",
-    "src_port": 49152,
-    "dst_ip": "198.51.100.45",
-    "dst_port": 445,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
-    ]
-  },
-  {
-    "timestamp": "2025-10-15T14:25:45.567890",
-    "sid": 2014876,
-    "msg": "ET EXPLOIT Possible SQL Injection Attempt",
-    "priority": 1,
-    "src_ip": "203.0.113.55",
-    "src_port": 12345,
-    "dst_ip": "192.168.1.100",
-    "dst_port": 80,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
-    ]
-  },
-  {
-    "timestamp": "2025-10-15T14:29:33.901234",
-    "sid": 2015234,
-    "msg": "ET EXPLOIT Buffer Overflow Attempt Detected",
-    "priority": 1,
-    "src_ip": "203.0.113.75",
-    "src_port": 45678,
-    "dst_ip": "192.168.1.150",
-    "dst_port": 8080,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
-    ]
-  },
-  {
-    "timestamp": "2025-10-15T14:31:42.567890",
-    "sid": 2008765,
-    "msg": "ET MALWARE Possible Ransomware Activity",
-    "priority": 1,
-    "src_ip": "192.168.1.100",
-    "src_port": 55000,
-    "dst_ip": "198.51.100.100",
-    "dst_port": 443,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
-    ]
-  },
-  {
-    "timestamp": "2025-10-15T14:24:01.234567",
-    "sid": 2010937,
-    "msg": "ET POLICY Suspicious inbound to MSSQL port 1433",
+    "timestamp": "2025-10-25T14:09:20.789012",
+    "sid": 1000005,
+    "msg": "GPL DNS Zone Transfer Attempt",
     "priority": 2,
-    "src_ip": "10.0.0.100",
-    "src_port": 52341,
-    "dst_ip": "192.168.1.200",
-    "dst_port": 1433,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
-    ]
-  },
-  {
-    "timestamp": "2025-10-15T14:27:12.345678",
-    "sid": 2011807,
-    "msg": "ET MALWARE Suspicious DNS Query",
-    "priority": 2,
-    "src_ip": "192.168.1.40",
+    "src_ip": "203.0.113.50",
     "src_port": 53241,
-    "dst_ip": "8.8.8.8",
+    "dst_ip": "192.168.1.200",
     "dst_port": 53,
-    "explanation": "No explanation found.",
+    "explanation": "DNS zone transfer attempt detected; could expose internal DNS structure.",
     "recommended_action": [
-      "Investigate manually."
+      "Verify authorized transfers.",
+      "Block unauthorized requests."
     ]
   },
   {
-    "timestamp": "2025-10-15T14:28:05.678901",
-    "sid": 2009910,
-    "msg": "ET POLICY Suspicious FTP Connection",
-    "priority": 2,
-    "src_ip": "192.168.1.60",
-    "src_port": 49200,
-    "dst_ip": "10.0.0.50",
-    "dst_port": 21,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
-    ]
-  },
-  {
-    "timestamp": "2025-10-15T14:30:15.234567",
-    "sid": 2012456,
-    "msg": "ET POLICY Suspicious Telnet Connection",
+    "timestamp": "2025-10-25T14:10:45.890123",
+    "sid": 6666666,
+    "msg": "Unusual Port Usage Detected",
     "priority": 2,
     "src_ip": "192.168.1.80",
-    "src_port": 52100,
-    "dst_ip": "10.0.0.75",
-    "dst_port": 23,
+    "src_port": 55000,
+    "dst_ip": "198.51.100.100",
+    "dst_port": 31337,
     "explanation": "No explanation found.",
     "recommended_action": [
       "Investigate manually."
     ]
   },
   {
-    "timestamp": "2025-10-15T14:32:28.890123",
-    "sid": 2016543,
-    "msg": "ET EXPLOIT Cross-Site Scripting XSS Attempt",
-    "priority": 2,
-    "src_ip": "203.0.113.90",
+    "timestamp": "2025-10-25T14:12:30.901234",
+    "sid": 1000006,
+    "msg": "ET WEB_SERVER Possible SQL Injection Attempt",
+    "priority": 1,
+    "src_ip": "203.0.113.60",
     "src_port": 12345,
     "dst_ip": "192.168.1.110",
     "dst_port": 80,
-    "explanation": "No explanation found.",
+    "explanation": "Suspicious SQL query patterns detected, may indicate attack.",
     "recommended_action": [
-      "Investigate manually."
+      "Review web server logs.",
+      "Validate input handling and patch vulnerable apps."
     ]
   },
   {
-    "timestamp": "2025-10-15T14:26:30.123456",
-    "sid": 2003055,
-    "msg": "ET POLICY Suspicious User-Agent in HTTP Request",
-    "priority": 3,
-    "src_ip": "192.168.1.30",
-    "src_port": 55555,
+    "timestamp": "2025-10-25T14:14:00.012345",
+    "sid": 1000008,
+    "msg": "ET TROJAN Backdoor Attempt",
+    "priority": 1,
+    "src_ip": "203.0.113.70",
+    "src_port": 45678,
+    "dst_ip": "192.168.1.150",
+    "dst_port": 8080,
+    "explanation": "Backdoor traffic detected; possible malware infection.",
+    "recommended_action": [
+      "Isolate affected host.",
+      "Run malware scan and check network activity."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:15:30.123456",
+    "sid": 4444444,
+    "msg": "Potential Data Exfiltration",
+    "priority": 1,
+    "src_ip": "192.168.1.90",
+    "src_port": 49500,
     "dst_ip": "198.51.100.200",
     "dst_port": 443,
     "explanation": "No explanation found.",
@@ -154,14 +161,131 @@
     ]
   },
   {
-    "timestamp": "2025-10-15T14:33:55.123456",
-    "sid": 2007654,
-    "msg": "ET POLICY Suspicious SMTP Relay Activity",
-    "priority": 3,
-    "src_ip": "192.168.1.120",
+    "timestamp": "2025-10-25T14:17:15.234567",
+    "sid": 1000009,
+    "msg": "ET POLICY Outbound SMTP Email Spamming",
+    "priority": 2,
+    "src_ip": "192.168.1.90",
     "src_port": 49500,
     "dst_ip": "198.51.100.50",
     "dst_port": 25,
+    "explanation": "Excessive outbound emails detected; may indicate spam or compromised host.",
+    "recommended_action": [
+      "Check host for malware.",
+      "Investigate sending patterns and block if necessary."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:18:45.345678",
+    "sid": 1000010,
+    "msg": "ET MALWARE CnC Traffic Detected",
+    "priority": 1,
+    "src_ip": "192.168.1.120",
+    "src_port": 52341,
+    "dst_ip": "198.51.100.200",
+    "dst_port": 443,
+    "explanation": "Traffic to known malware command and control server detected.",
+    "recommended_action": [
+      "Isolate host.",
+      "Investigate infection and block CnC IPs."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:20:20.456789",
+    "sid": 5555555,
+    "msg": "Suspicious Encrypted Tunnel Activity",
+    "priority": 3,
+    "src_ip": "192.168.1.130",
+    "src_port": 49200,
+    "dst_ip": "203.0.113.80",
+    "dst_port": 1194,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:22:00.567890",
+    "sid": 1000012,
+    "msg": "ET SCAN FIN Scan",
+    "priority": 2,
+    "src_ip": "203.0.113.90",
+    "src_port": 54000,
+    "dst_ip": "192.168.1.200",
+    "dst_port": 22,
+    "explanation": "FIN scan detected; attacker probing for open ports stealthily.",
+    "recommended_action": [
+      "Monitor scanning host.",
+      "Check network for abnormal activity."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:23:30.678901",
+    "sid": 2222222,
+    "msg": "Anomalous File Transfer Pattern",
+    "priority": 2,
+    "src_ip": "192.168.1.140",
+    "src_port": 49152,
+    "dst_ip": "10.0.0.50",
+    "dst_port": 445,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:25:15.789012",
+    "sid": 1000014,
+    "msg": "ET MALWARE Ransomware Behavior",
+    "priority": 1,
+    "src_ip": "192.168.1.140",
+    "src_port": 55555,
+    "dst_ip": "198.51.100.100",
+    "dst_port": 443,
+    "explanation": "Indicators of ransomware activity detected on host.",
+    "recommended_action": [
+      "Isolate host immediately.",
+      "Check backups and monitor for encryption behavior."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:26:45.890123",
+    "sid": 3333333,
+    "msg": "Anomalous Network Traffic Pattern",
+    "priority": 3,
+    "src_ip": "192.168.1.160",
+    "src_port": 49152,
+    "dst_ip": "10.0.0.50",
+    "dst_port": 8888,
+    "explanation": "No explanation found.",
+    "recommended_action": [
+      "Investigate manually."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:28:30.901234",
+    "sid": 1000015,
+    "msg": "ET EXPLOIT Microsoft Office Exploit",
+    "priority": 1,
+    "src_ip": "203.0.113.100",
+    "src_port": 12345,
+    "dst_ip": "192.168.1.180",
+    "dst_port": 80,
+    "explanation": "Attempt to exploit Microsoft Office vulnerability.",
+    "recommended_action": [
+      "Patch MS Office.",
+      "Review affected host for compromise."
+    ]
+  },
+  {
+    "timestamp": "2025-10-25T14:30:00.012345",
+    "sid": 1111111,
+    "msg": "Suspicious Registry Modification Attempt",
+    "priority": 2,
+    "src_ip": "192.168.1.200",
+    "src_port": 49152,
+    "dst_ip": "198.51.100.150",
+    "dst_port": 135,
     "explanation": "No explanation found.",
     "recommended_action": [
       "Investigate manually."
