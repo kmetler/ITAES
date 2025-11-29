@@ -15,20 +15,6 @@
     ]
   },
   {
-    "timestamp": "2025-10-25T14:01:30.234567",
-    "sid": 7777777,
-    "msg": "Unidentified Protocol Activity",
-    "priority": 2,
-    "src_ip": "192.168.1.60",
-    "src_port": 49152,
-    "dst_ip": "198.51.100.75",
-    "dst_port": 9999,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
-    ]
-  },
-  {
     "timestamp": "2025-10-25T14:03:00.345678",
     "sid": 1000002,
     "msg": "ET SCAN Nmap Scripting Engine discovery",
@@ -56,20 +42,6 @@
     "recommended_action": [
       "Investigate scanning host.",
       "Check firewall logs and block malicious IP."
-    ]
-  },
-  {
-    "timestamp": "2025-10-25T14:06:15.567890",
-    "sid": 8888888,
-    "msg": "Suspicious Peer-to-Peer Connection",
-    "priority": 3,
-    "src_ip": "192.168.1.70",
-    "src_port": 52100,
-    "dst_ip": "203.0.113.40",
-    "dst_port": 6881,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
     ]
   },
   {
@@ -103,20 +75,6 @@
     ]
   },
   {
-    "timestamp": "2025-10-25T14:10:45.890123",
-    "sid": 6666666,
-    "msg": "Unusual Port Usage Detected",
-    "priority": 2,
-    "src_ip": "192.168.1.80",
-    "src_port": 55000,
-    "dst_ip": "198.51.100.100",
-    "dst_port": 31337,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
-    ]
-  },
-  {
     "timestamp": "2025-10-25T14:12:30.901234",
     "sid": 1000006,
     "msg": "ET WEB_SERVER Possible SQL Injection Attempt",
@@ -144,20 +102,6 @@
     "recommended_action": [
       "Isolate affected host.",
       "Run malware scan and check network activity."
-    ]
-  },
-  {
-    "timestamp": "2025-10-25T14:15:30.123456",
-    "sid": 4444444,
-    "msg": "Potential Data Exfiltration",
-    "priority": 1,
-    "src_ip": "192.168.1.90",
-    "src_port": 49500,
-    "dst_ip": "198.51.100.200",
-    "dst_port": 443,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
     ]
   },
   {
@@ -191,20 +135,6 @@
     ]
   },
   {
-    "timestamp": "2025-10-25T14:20:20.456789",
-    "sid": 5555555,
-    "msg": "Suspicious Encrypted Tunnel Activity",
-    "priority": 3,
-    "src_ip": "192.168.1.130",
-    "src_port": 49200,
-    "dst_ip": "203.0.113.80",
-    "dst_port": 1194,
-    "explanation": "No explanation found.",
-    "recommended_action": [
-      "Investigate manually."
-    ]
-  },
-  {
     "timestamp": "2025-10-25T14:22:00.567890",
     "sid": 1000012,
     "msg": "ET SCAN FIN Scan",
@@ -228,7 +158,7 @@
     "src_port": 49152,
     "dst_ip": "10.0.0.50",
     "dst_port": 445,
-    "explanation": "No explanation found.",
+    "explanation": "### Snort Alert Explanation\n\n**Alert Message:** Anomalous File Transfer Pattern\n\n**Source:** 192.168.1.140:49152  \n**Destination:** 10.0.0.50:445  \n**Priority:** 2  \n**SID:** 2222222\n\n#### What This Means:\nThis alert indicates that there\u2019s a suspicious pattern of file transfer occurring from the device with the IP address **192.168.1.140** to the device with the IP address **10.0.0.50**. The source is using port **49152**, which is typically a high-numbered port used for dynamic or private connections. The destination is using port **445**, commonly used for SMB (Server Message Block) file sharing.\n\nThe term \"anomalous\" suggests that this behavior is not typical for the network or the devices involved. It may be a sign of an unauthorized file transfer or data exfiltration attempt.\n\n### Recommended Actions\n\n1. **Investigate the Source Device:**\n   - Check the device at **192.168.1.140** for any signs of compromise. This includes reviewing logs, running an antivirus scan, and assessing user activity to determine if someone is conducting unauthorized file transfers.\n\n2. **Monitor Network Traffic:**\n   - Analyze traffic patterns between these two IP addresses. Look for more instances of similar transfers, unusual protocol usage, or any other odd behavior that may indicate a larger problem within the network.\n\n3. **Implement Access Controls:**\n   - If the transfer appears unauthorized, consider restricting access to **10.0.0.50** from **192.168.1.140** or the broader network. Review and update firewall rules, and ensure that only trusted and necessary devices can communicate over port **445**.",
     "recommended_action": [
       "Investigate manually."
     ]
@@ -257,7 +187,7 @@
     "src_port": 49152,
     "dst_ip": "10.0.0.50",
     "dst_port": 8888,
-    "explanation": "No explanation found.",
+    "explanation": "### Explanation of the Snort Alert\n\nThis Snort alert is indicating that there is suspicious network traffic occurring between two specific IP addresses:\n\n- **Source**: 192.168.1.160 (this is likely a device on your local network)\n- **Destination**: 10.0.0.50 (this could be a server or another device in your network)\n- **Ports**: The source is using port 49152 and the destination is using port 8888, which suggests it might be engaging in non-standard or unexpected communication.\n\nThe alert describes this activity as an \"Anomalous Network Traffic Pattern,\" meaning that the traffic does not fit expected behavior or patterns. This could be a sign of data exfiltration, a potential compromise of the device at 192.168.1.160, or other malicious activity.\n\n### Recommended Actions\n\n1. **Investigate the Source Device**:\n   - Check the device at 192.168.1.160 to ensure it's functioning normally. Look for any signs of infection or unauthorized software, such as unexpected background processes or applications.\n\n2. **Monitor Network Traffic**:\n   - Use network monitoring tools to analyze the traffic to and from both 192.168.1.160 and 10.0.0.50. Pay attention to other unusual patterns that might emerge and capture packet data for deeper analysis.\n\n3. **Implement Firewall Rules or Block Traffic**:\n   - If ongoing analysis corroborates that the traffic is suspicious or harmful, consider blocking the connection between 192.168.1.160 and 10.0.0.50 on your firewall. Additionally, review your firewall and security settings to make sure unauthorized traffic cannot flow freely across your network. \n\nBy taking these actions, you can help mitigate any potential risks associated with this alert and enhance the overall security of your network.",
     "recommended_action": [
       "Investigate manually."
     ]
@@ -286,7 +216,7 @@
     "src_port": 49152,
     "dst_ip": "198.51.100.150",
     "dst_port": 135,
-    "explanation": "No explanation found.",
+    "explanation": "### Explanation of the Snort Alert\n\nThis alert indicates that there was a suspicious attempt to modify the Windows Registry on a device in your network. Here's a breakdown of what the alert means:\n\n- **SID (Signature ID)**: 1111111 \u2014 This is a unique identifier for this particular alert type.\n- **Message**: \"Suspicious Registry Modification Attempt\" \u2014 This suggests that a change was made to the system's registry settings, which could be malicious.\n- **Priority**: 2 \u2014 This means the alert is of moderate concern, requiring prompt attention.\n- **Source**: 192.168.1.200:49152 \u2014 This is the IP address and port number of the device making the modification attempt.\n- **Destination**: 198.51.100.150:135 \u2014 This is the IP address and port number of the target device receiving the modification request. Port 135 is commonly associated with Microsoft RPC (Remote Procedure Call), which can be used in various administrative tasks and services.\n\n### Recommended Actions\n\n1. **Investigate the Source Host (192.168.1.200)**:\n   - Examine the system logs and processes on this device to identify any unauthorized or suspicious activity. Check for recent installations or changes that might explain the alert.\n\n2. **Verify the Destination Host (198.51.100.150)**:\n   - Determine if this external IP address is known and legitimate. Investigate if the destination is configured correctly and not being subjected to potential exploitation.\n\n3. **Strengthen Security Measures**:\n   - Implement or reinforce rules and policies around registry modifications. This might include using software that restricts access to the registry, updating firewall rules, or enhancing intrusion detection systems to catch similar attempts in the future.\n\nBy taking these actions, you can better understand the context of this alert and mitigate potential risks associated with unauthorized registry modifications.",
     "recommended_action": [
       "Investigate manually."
     ]
