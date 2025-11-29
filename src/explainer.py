@@ -2,6 +2,7 @@
 # -------------------------
 # Maps alert SIDs to plain-English explanations and recommended actions.
 # Enriches alerts with explanations from the YAML dictionary.
+# Added GPT integration
 
 import yaml
 import os
