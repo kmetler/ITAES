@@ -5,3 +5,4 @@ jinja2
 idstools       # or py-idstools (see note below)
 weasyprint     # optional PDF export (or wkhtmltopdf)
 flask          # optional for web UI
+openai>=1.0.0 
