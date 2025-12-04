@@ -8,7 +8,7 @@ import yaml
 import os
 from openai import OpenAI
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="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")
 
 def load_explainer(file_path):
     with open(file_path, 'r') as f:
